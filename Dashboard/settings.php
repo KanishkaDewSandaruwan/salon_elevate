@@ -109,9 +109,6 @@
                                 <div class="col-md-3">
                                     <button style="font-size: 20px;" data-toggle="modal" data-target="#changeHeader" class="btn col-md-12 btn-lg btn-dark mt-3 ml-3">Change Home Page Header</button>
                                 </div> 
-                                <div class="col-md-3">
-                                    <button style="font-size: 20px;" data-toggle="modal" data-target="#changebanner" class="btn col-md-12 btn-lg btn-dark mt-3 ml-3">Change Service Page and Banners</button>
-                                </div> 
                         </div>
                     </div>
                     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
@@ -382,108 +379,7 @@
           </div>
         </div>
 
-               <!-- Modal -->
-      <div class="modal fade" id="changebanner" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title text-danger" id="exampleModalLabel">Page Service & Banners</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-                <form class="col-md-12 mt-3" method="POST" enctype="multipart/form-data">
-                  <div class="modal-body">
-
-                         Select Header image to upload:<br>
-                        <input type="file" name="file" /><br><br>
-
-                        <div class="form-row">
-                      <div class="form-group col-md-6">
-
-                        <label for="name" class="a"><b>Title</b></label>
-                        <input type="text" class="form-control" name="title" placeholder="Title">
-                      </div>
-                    </div>
-
-                    <div class="form-row">
-                      <div class="form-group col-md-6">
-
-                        <label for="name" class="a"><b>Description</b></label>
-                        <input type="text" class="form-control" name="desc" placeholder="Description">
-                      </div>
-                    </div>
-
-                    Select Subpage Header image to upload:<br>
-                        <input type="file" name="file1" /><br><br>
-
-                                
-                  </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" name="image_set_home" class="btn btn-primary">Save changes</button>
-              </div>
-                </form>
-                <?php
-                   if(isset($_POST['image_set_home'])){
- 
-                      $name = $_FILES['file']['name'];
-                      $name1 = $_FILES['file1']['name'];
-
-                      $title = $_REQUEST['title'];
-                        $desc = $_REQUEST['desc'];
-
-
-                      // $target_dir = "upload/";
-                      $target_dir = "../upload/home/";
-                      $target_file = $target_dir . basename($_FILES["file"]["name"]);
-                      $target_file1 = $target_dir . basename($_FILES["file1"]["name"]);
-
-
-                      // Select file type
-                      $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-                      $imageFileType1 = strtolower(pathinfo($target_file1,PATHINFO_EXTENSION));
-
-                      // Valid file extensions
-                      $extensions_arr = array("jpg","jpeg","png","gif");
-
-                      // Check extension
-                      if( in_array($imageFileType,$extensions_arr) ){
-                          move_uploaded_file($_FILES['file']['tmp_name'],$target_dir.$name);
-                          $query="UPDATE details SET header_image='$name'";
-                          mysqli_query($con,$query);
-                          echo '<script>alert("Header Details Change Success"); window.location.href="settings.php";</script>';
-                      }
-
-                      if( in_array($imageFileType1,$extensions_arr) ){
-                          move_uploaded_file($_FILES['file1']['tmp_name'],$target_dir.$name1);
-                          $query="UPDATE details SET subpage_image='$name1'";
-                          mysqli_query($con,$query);
-                          echo '<script>alert("Header Details Change Success"); window.location.href="settings.php";</script>';
-                      }
-
-                      if(!empty($title))
-                      {
-
-                        $query3="UPDATE details SET header_title='$title'";
-                        $sql3=mysqli_query($con,$query3);
-                          echo '<script>alert("Header Details Change Success"); window.location.href="settings.php";</script>';
-                      }
-                      if(!empty($desc))
-                      {
-
-                        $query3="UPDATE details SET header_desc='$desc'";
-                        $sql3=mysqli_query($con,$query3);
-                          echo '<script>alert("Header Details Change Success"); window.location.href="settings.php";</script>';
-                      }
-                    }
-                    
-                  ?>
-                    
-            </div>
-          </div>
-        </div>
-
+            
         <!-- Modal -->
       <div class="modal fade" id="changeDetails" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
@@ -529,6 +425,21 @@
                         <input type="text" class="form-control" name="open" placeholder="Salon Opening">
                       </div>
                     </div>
+
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label for="title" class="a"><b>Salon Opening Time</b></label><br>
+                        <input type="time" class="form-control" name="ot" placeholder="Salon Opening">
+                      </div>
+                    </div>
+
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label for="title" class="a"><b>Salon Close Time</b></label><br>
+                        <input type="time" class="form-control" name="ct" placeholder="Salon Opening">
+                      </div>
+                    </div>
+
                                 
                   </div>
               <div class="modal-footer">
@@ -544,6 +455,8 @@
                       $title = $_REQUEST['title'];
                       $desc = $_REQUEST['editordata'];
                       $open = $_REQUEST['open'];
+                      $ot = $_REQUEST['ot'];
+                      $ct = $_REQUEST['ct'];
 
 
                       // $target_dir = "upload/";
@@ -584,6 +497,23 @@
                       {
 
                         $query3="UPDATE about SET open='$open'";
+                        $sql3=mysqli_query($con,$query3);
+                        echo "<script type=\"text/javascript\"> alert(\"Updated Succussfully\"); window.location= \"settings.php\";</script>";
+                      }
+
+
+                      if(!empty($ot))
+                      {
+
+                        $query3="UPDATE about SET open_time='$ot'";
+                        $sql3=mysqli_query($con,$query3);
+                        echo "<script type=\"text/javascript\"> alert(\"Updated Succussfully\"); window.location= \"settings.php\";</script>";
+                      }
+
+                       if(!empty($ct))
+                      {
+
+                        $query3="UPDATE about SET close_time='$ct'";
                         $sql3=mysqli_query($con,$query3);
                         echo "<script type=\"text/javascript\"> alert(\"Updated Succussfully\"); window.location= \"settings.php\";</script>";
                       }

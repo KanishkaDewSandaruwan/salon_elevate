@@ -89,7 +89,7 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Employee</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Edit Service</h1>
                     </div>
 
                     <!-- Content Row -->
@@ -98,7 +98,7 @@
                             <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Employee Edit</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Edit Service</h6>
                         </div>
                             <div class="col-md-6 mt-4" style="font-family: \"Times New Roman\",Times, serif;">
                                    <form class="reg_form bg-light p-4 border rounded" action="" method="POST" enctype="multipart/form-data">

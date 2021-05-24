@@ -189,6 +189,13 @@ $image_src2 = "upload/home/".$about_image; ?>
                     $customer_id = $_SESSION['customer_id'];
                     $cdate = date("Y/m/d m:H:s");
 
+                    $query3="SELECT * FROM about";
+                    $sql3=mysqli_query($con,$query3);
+                    $row3=mysqli_fetch_assoc($sql3);
+
+                    $close = $row3['close_time'];
+                    $open = $row3['open_time'];
+
                     $total = 0;
 
                     $time = date('H:i', strtotime($checktime.'+1 hour'));
@@ -199,12 +206,13 @@ $image_src2 = "upload/home/".$about_image; ?>
                     $total = $row['price'];
                     if (!empty($checkindate)) {
                       if (!empty($checktime)) {
+                              if (($open <= $checktime) && ($checktime <= $close)) {
                                 if (new DateTime() <= new DateTime($checkindate)) {
 
                                        $query2="SELECT * FROM appinment WHERE service_id = '$service_id' AND eppinment_date = '$checkindate' AND NOT(eppinment_end_time < '$checktime' OR eppinment_time  > '$time') ";
                                        $sql2=mysqli_query($con,$query2);
 
-                                        if(mysqli_num_rows($sql2)>0)
+                                        if(mysqli_num_rows($sql2) > 6)
                                         {
                                           echo "<script type=\"text/javascript\"> alert(\"This Day is Not Available\");</script>";
                                         }
@@ -227,7 +235,8 @@ $image_src2 = "upload/home/".$about_image; ?>
 
                                         }
 
-                              }else{echo "<script type=\"text/javascript\"> alert(\"Start Date need to future day\");</script>";}
+                                }else{echo "<script type=\"text/javascript\"> alert(\"Start Date need to future day\");</script>";}
+                              }else{echo "<script type=\"text/javascript\"> alert(\"Salon is closed in this time please take anoth time\");</script>";}
                       }else{echo "<script type=\"text/javascript\"> alert(\"Please enter Appinment Time\");</script>";}
                     }else{echo "<script type=\"text/javascript\"> alert(\"Please enter Appinment Date\");</script>";}
 

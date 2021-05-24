@@ -138,8 +138,8 @@ $image_src2 = "upload/home/".$about_image; ?>
                                         <tr class="bg-dark">
                                             <th class="border-top-0 text-white">Service</th>
                                             <th class="border-top-0 text-white">Appoinment Date </th>
-                                            <th class="border-top-0 text-white">Chech In Date</th>
-                                            <th class="border-top-0 text-white">Check Out Date</th>
+                                            <th class="border-top-0 text-white">Check In Time</th>
+                                            <th class="border-top-0 text-white">Check Out Out</th>
                                             <th class="border-top-0 text-white">Amount</th>
 
                                             <th class="border-top-0 text-white">Payment</th>
