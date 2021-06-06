@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 23, 2021 at 07:14 PM
+-- Generation Time: May 24, 2021 at 05:30 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.3.28
 
@@ -37,15 +37,17 @@ CREATE TABLE `about` (
   `facebook` varchar(255) NOT NULL,
   `twiter` varchar(255) NOT NULL,
   `instragram` varchar(255) NOT NULL,
-  `open` varchar(255) NOT NULL
+  `open` varchar(255) NOT NULL,
+  `open_time` time NOT NULL,
+  `close_time` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `about`
 --
 
-INSERT INTO `about` (`image`, `title`, `description`, `email`, `phone`, `address`, `facebook`, `twiter`, `instragram`, `open`) VALUES
-('hendrik-cornelissen-jpTT_SAU034-unsplash.jpg', 'White Catchers Gift Wall decor', '<p>sssss</p>', 'kanishkadewsandaruwan@gmail.com', 713664071, 'Banwalgodalla, Kosmulla', 'https://www.facebook.com/kanishka.dew.sandaruwan/', 'https://www.facebook.com/kanishka.dew.sandaruwan/', 'https://www.facebook.com/kanishka.dew.sandaruwan/', 'Mon-Sun : 10am:07pm');
+INSERT INTO `about` (`image`, `title`, `description`, `email`, `phone`, `address`, `facebook`, `twiter`, `instragram`, `open`, `open_time`, `close_time`) VALUES
+('hendrik-cornelissen-jpTT_SAU034-unsplash.jpg', 'White Catchers Gift Wall decor', '<p>sssss</p>', 'kanishkadewsandaruwan@gmail.com', 713664071, 'Banwalgodalla, Kosmulla', 'https://www.facebook.com/kanishka.dew.sandaruwan/', 'https://www.facebook.com/kanishka.dew.sandaruwan/', 'https://www.facebook.com/kanishka.dew.sandaruwan/', 'Mon-Sun : 10am:07pm', '09:01:00', '19:00:00');
 
 -- --------------------------------------------------------
 
@@ -71,7 +73,16 @@ CREATE TABLE `appinment` (
 --
 
 INSERT INTO `appinment` (`appoinment_id`, `eppinment_date`, `eppinment_time`, `eppinment_end_time`, `trn_date`, `service_id`, `customer_id`, `status`, `payment`, `amount`) VALUES
-(10, '2021-05-27', '04:34:00', '05:34:00', '2021-05-23 05:13:49', 5, 0, 'Canceled', 'Paid', 2500);
+(21, '2021-05-26', '11:59:00', '12:59:00', '2021-05-24 05:11:11', 5, 5, 'Pending', 'Paid', 2500),
+(22, '2021-05-26', '12:00:00', '13:00:00', '2021-05-24 05:11:55', 5, 5, 'Pending', 'Pending', 2500),
+(23, '2021-05-26', '12:59:00', '13:59:00', '2021-05-24 05:11:42', 5, 5, 'Pending', 'Pending', 2500),
+(24, '2021-05-27', '13:00:00', '14:00:00', '2021-05-24 05:11:16', 5, 5, 'Pending', 'Paid', 2500),
+(25, '2021-05-27', '13:00:00', '14:00:00', '2021-05-24 05:11:04', 5, 5, 'Pending', 'Pending', 2500),
+(26, '2021-05-27', '13:00:00', '14:00:00', '2021-05-24 05:11:43', 5, 5, 'Pending', 'Pending', 2500),
+(27, '2021-05-27', '13:00:00', '14:00:00', '2021-05-24 05:11:21', 5, 5, 'Pending', 'Pending', 2500),
+(28, '2021-05-27', '13:00:00', '14:00:00', '2021-05-24 05:11:47', 5, 5, 'Pending', 'Pending', 2500),
+(29, '2021-05-27', '13:17:00', '14:17:00', '2021-05-24 05:11:30', 5, 5, 'Pending', 'Pending', 2500),
+(30, '2021-05-27', '13:00:00', '14:00:00', '2021-05-24 05:11:05', 5, 5, 'Pending', 'Pending', 2500);
 
 -- --------------------------------------------------------
 
@@ -194,7 +205,7 @@ INSERT INTO `message` (`m_id`, `name`, `email`, `subject`, `message`, `trn_date`
 CREATE TABLE `service` (
   `service_id` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
-  `description` varchar(255) NOT NULL,
+  `description` varchar(9000) NOT NULL,
   `image` varchar(255) NOT NULL,
   `price` int(255) NOT NULL,
   `headline` varchar(255) NOT NULL,
@@ -258,7 +269,7 @@ ALTER TABLE `service`
 -- AUTO_INCREMENT for table `appinment`
 --
 ALTER TABLE `appinment`
-  MODIFY `appoinment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `appoinment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `customer`

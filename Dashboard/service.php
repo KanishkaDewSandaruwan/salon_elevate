@@ -244,10 +244,6 @@
                                       $hour = $_REQUEST['hour'];
                                       $cdate = date("Y/m/d m:H:s");
 
-                                      if (isset($_REQUEST['file'])) {
-
-                                      $file = $_REQUEST['file'];
-
                                       $name = $_FILES['file']['name'];
                                       $target_dir = "../upload/service/";
                                       $target_file = $target_dir . basename($_FILES["file"]["name"]);
@@ -293,7 +289,7 @@
                                           }else {echo "<script>alert(\"Enter Description\");</script>";}
                                         }else{ echo "<script>alert(\"Enter Headline\");</script>";}
                                       }else{ echo "<script>alert(\"Enter Service Title\");</script>";} 
-                                  }
+                                  
                                   } ?>
                   </div>
                 </form>

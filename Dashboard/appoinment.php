@@ -84,7 +84,7 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Appoinment</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Send Email>
                     </div>
 
                     <!-- Content Row -->
@@ -93,7 +93,7 @@
                             <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Appoinment List</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Send Email</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -124,6 +124,10 @@
                                                 $viewresult1 = mysqli_query($con,$viewquery1);
                                                 $row1 = mysqli_fetch_assoc($viewresult1);
 
+                                                $viewquery2 = " SELECT * FROM customer where customer_id='".$row['customer_id']."'";
+                                                $viewresult2 = mysqli_query($con,$viewquery2);
+                                                $row2 = mysqli_fetch_assoc($viewresult2);
+
                                                  $image = $row1['image'];
                                                 $image_src = "../upload/service/".$image;
       
@@ -137,6 +141,7 @@
                                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                             <?php if($row['payment'] == 'Paid'){ ?>
                                                           <a class="dropdown-item" href="manage.php?accept=<?php echo $row['appoinment_id']; ?>"><i class="fas fa-check-circle"> Accept</i></a>
+                                                          <a class="dropdown-item" href="send_email.php?email=<?php echo $row2['email']; ?>"><i class="fas fa-check-circle"> Send Email</i></a>
                                                       <?php } ?>
                                                           <a class="dropdown-item" href="manage.php?cancel=<?php echo $row['appoinment_id']; ?>"><i class="fas fa-times-circle"> Cancel</i></a>
                                                           <a class="dropdown-item" href="delete.php?appoinment_id=<?php echo $row['appoinment_id']; ?>"><i class="fas fa-trash-alt"> Delete</i></a>
