@@ -84,7 +84,7 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Send Email>
+                        <h1 class="h3 mb-0 text-gray-800">Appoinment
                     </div>
 
                     <!-- Content Row -->
@@ -93,7 +93,7 @@
                             <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Send Email</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Appoinment</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -102,8 +102,9 @@
                                         <tr class="bg-dark">
                                             <th class="border-top-0 text-white">Action</th>
                                             <th class="border-top-0 text-white">Service</th>
+                                            <th class="border-top-0 text-white">Customer</th>
                                             <th class="border-top-0 text-white">Appoinment Date </th>
-                                            <th class="border-top-0 text-white">Chech In Date</th>
+                                            <th class="border-top-0 text-white">Check In Date</th>
                                             <th class="border-top-0 text-white">Check Out Date</th>
                                             <th class="border-top-0 text-white">Amount</th>
 
@@ -130,6 +131,9 @@
 
                                                  $image = $row1['image'];
                                                 $image_src = "../upload/service/".$image;
+
+                                                $content = "You Have Apponment on ".$row['eppinment_date']."  at ".$row['eppinment_time']."";
+                                                $subject = "to remind Your Appoinment";
       
                                                 ?>
                                                 <tr>
@@ -141,7 +145,7 @@
                                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                             <?php if($row['payment'] == 'Paid'){ ?>
                                                           <a class="dropdown-item" href="manage.php?accept=<?php echo $row['appoinment_id']; ?>"><i class="fas fa-check-circle"> Accept</i></a>
-                                                          <a class="dropdown-item" href="send_email.php?email=<?php echo $row2['email']; ?>"><i class="fas fa-check-circle"> Send Email</i></a>
+                                                          <a class="dropdown-item" href="sendmail.php?email=<?php echo $row2['email']; ?>&content=<?php echo $content; ?>&subject=<?php echo $subject; ?>"><i class="fas fa-check-circle"> Send Email</i></a>
                                                       <?php } ?>
                                                           <a class="dropdown-item" href="manage.php?cancel=<?php echo $row['appoinment_id']; ?>"><i class="fas fa-times-circle"> Cancel</i></a>
                                                           <a class="dropdown-item" href="delete.php?appoinment_id=<?php echo $row['appoinment_id']; ?>"><i class="fas fa-trash-alt"> Delete</i></a>
@@ -149,6 +153,7 @@
                                                       </div>
                                                     </td>
                                                     <td><?php echo $row1['title']; ?><br><?php echo $row1['hour']; ?><br><img style="width: 150px" src='<?php echo $image_src; ?>'></td>
+                                                    <td><?php echo $row2['name']; ?> <br><?php echo $row2['address']; ?><br><?php echo $row2['phone']; ?></td>
                                                     <td><?php echo $row['eppinment_date']; ?></td>
                                                     <td><?php echo $row['eppinment_time']; ?></td>
                                                     <td><?php echo $row['eppinment_end_time']; ?></td>
