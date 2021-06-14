@@ -40,6 +40,12 @@ session_start();
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
+                            <style type="text/css">
+                                 .bg-login-image{background:url(../images/img.jpg);
+                                    background-position:center;
+                                    background-size:cover
+                                }
+                            </style>
                             <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
                             <div class="col-lg-6">
                                 <div class="p-5">

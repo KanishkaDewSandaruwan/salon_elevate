@@ -34,6 +34,9 @@ require_once 'connection.php';
             <div class="card-body p-0">
                 <!-- Nested Row within Card Body -->
                 <div class="row">
+                    <style type="text/css">
+                        .bg-register-image{background:url(images/img.jpg);background-position:center;background-size:cover}
+                    </style>
                     <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
                     <div class="col-lg-7">
                         <div class="p-5">
